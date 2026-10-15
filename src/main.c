@@ -60,7 +60,7 @@ void read_serial_line(char* buffer , size_t max_len) {
 void app_main(void) {
     
     char rx_buffer [128];
-    float A[2][2] , B[2][2] , Sum [2][2]; 
+    float A[2][2] , B[2][2] , Sum [2][2], Res[2][2];
     
     ESP_LOGI(TAG , "Operaciones Matriciales"); 
     
@@ -97,7 +97,14 @@ void app_main(void) {
         Sum [0][1] = A[0][1] + B[0][1]; 
         Sum [1][0] = A[1][0] + B[1][0]; 
         Sum [1][1] = A[1][1] + B[1][1];
-        print_matrix("Adición (A + B)", Sum); 
+        print_matrix("Adición (A + B)", Sum);
+
+        //2.RESTA (A - B)
+        Res [0][0] = A[0][0] - B[0][0];
+        Res [0][1] = A[0][1] - B[0][1];
+        Res [1][0] = A[1][0] - B[1][0];
+        Res [1][1] = A[1][1] - B[1][1];
+        print_matrix("Substracción (A - B)", Res);
         
         printf("│====================================│\n\n");
     }
